@@ -1,15 +1,4 @@
-# Habit Tracker - Implementation Plan
-
-## ✅ Completed Steps
-- [x] 1. Create project directory structure
-- [x] 2. Install Flask dependency
-- [x] 3. Create backend Flask server (backend/app.py)
-- [x] 4. Create initial habits.json storage
-- [x] 5. Create frontend HTML (frontend/index.html)
-- [x] 6. Create frontend CSS (frontend/style.css)
-- [x] 7. Create frontend JavaScript (frontend/main.js)
-- [x] 8. Test the application
-
+# Habit Tracker 
 ## Project Structure
 ```
 /home/vivek/Desktop/habit-tracker/
