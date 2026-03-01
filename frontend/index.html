@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <h1 class="app-title">📊 Habit Tracker</h1>
+                <div class="view-tabs">
+                    <button class="tab-btn active" data-view="week">This Week</button>
+                    <button class="tab-btn" data-view="month">This Month</button>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="add-habit-btn" id="addHabitBtn">
+                    <span class="btn-icon">+</span>
+                    Add Habit
+                </button>
+            </div>
+        </header>
+
+        <!-- Category Filters -->
+        <nav class="category-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="Study">Study</button>
+            <button class="filter-btn" data-category="Fitness">Fitness</button>
+            <button class="filter-btn" data-category="Health">Health</button>
+            <button class="filter-btn" data-category="Personal">Personal</button>
+        </nav>
+
+        <!-- Week Navigation -->
+        <div class="week-nav">
+            <button class="nav-btn" id="prevWeek">← Prev</button>
+            <span class="current-week" id="currentWeekDisplay">March 2026</span>
+            <button class="nav-btn" id="nextWeek">Next →</button>
+        </div>
+
+        <!-- Main Habit Table -->
+        <div class="table-container">
+            <table class="habit-table" id="habitTable">
+                <thead>
+                    <tr>
+                        <th class="habit-col">Task</th>
+                        <th class="day-col">Mon<br><span class="day-date" id="day-0"></span></th>
+                        <th class="day-col">Tue<br><span class="day-date" id="day-1"></span></th>
+                        <th class="day-col">Wed<br><span class="day-date" id="day-2"></span></th>
+                        <th class="day-col">Thu<br><span class="day-date" id="day-3"></span></th>
+                        <th class="day-col">Fri<br><span class="day-date" id="day-4"></span></th>
+                        <th class="day-col">Sat<br><span class="day-date" id="day-5"></span></th>
+                        <th class="day-col">Sun<br><span class="day-date" id="day-6"></span></th>
+                        <th class="stats-col">Streak</th>
+                        <th class="stats-col">% Done</th>
+                    </tr>
+                </thead>
+                <tbody id="habitTableBody">
+                    <!-- Habits will be rendered here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Monthly Heatmap Section -->
+        <section class="heatmap-section">
+            <h2 class="section-title">Monthly Streak Heatmap</h2>
+            <div class="heatmap-container" id="heatmapContainer">
+                <!-- Heatmap will be rendered here -->
+            </div>
+            <div class="heatmap-legend">
+                <span class="legend-label">Less</span>
+                <div class="legend-box level-0"></div>
+                <div class="legend-box level-1"></div>
+                <div class="legend-box level-2"></div>
+                <div class="legend-box level-3"></div>
+                <div class="legend-box level-4"></div>
+                <span class="legend-label">More</span>
+            </div>
+        </section>
+
+        <!-- Weekly Stats Section -->
+        <section class="stats-section">
+            <h2 class="section-title">Weekly Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCompleted">0</div>
+                    <div class="stat-label">Tasks Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="bestStreak">0</div>
+                    <div class="stat-label">Best Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="successRate">0%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="longestStreakHabit">-</div>
+                    <div class="stat-label">Longest Streak Habit</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Motivational Message -->
+        <div class="motivation-container" id="motivationContainer">
+            <p class="motivation-text" id="motivationText"></p>
+        </div>
+    </div>
+
+    <!-- Add Habit Modal -->
+    <div class="modal-overlay" id="addHabitModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Habit</h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <form id="addHabitForm">
+                <div class="form-group">
+                    <label for="habitName">Habit Name</label>
+                    <input type="text" id="habitName" placeholder="e.g., DSA 2 hrs, Gym workout" required>
+                </div>
+                <div class="form-group">
+                    <label for="habitCategory">Category</label>
+                    <select id="habitCategory">
+                        <option value="Study">Study</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Health">Health</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="habitType">Habit Type</label>
+                    <div class="type-selector">
+                        <label class="type-option">
+                            <input type="radio" name="habitType" value="positive" checked>
+                            <span class="type-icon positive">↑</span>
+                            <span>Positive (build)</span>
+                        </label>
+                        <label class="type-option">
+                            <input type="radio" name="habitType" value="negative">
+                            <span class="type-icon negative">↓</span>
+                            <span>Negative (avoid)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-submit">Add Habit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-message" id="toastMessage"></span>
+        <button class="toast-undo" id="toastUndo">UNDO</button>
+    </div>
+
+    <!-- Notes Modal -->
+    <div class="modal-overlay" id="notesModal">
+        <div class="modal modal-small">
+            <div class="modal-header">
+                <h2>Add Note</h2>
+                <button class="modal-close" id="closeNotesModal">×</button>
+            </div>
+            <form id="notesForm">
+                <div class="form-group">
+                    <label for="habitNote">Note for <span id="noteDate"></span></label>
+                    <textarea id="habitNote" placeholder="e.g., Felt tired today, need to rest more..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelNotesBtn">Cancel</button>
+                    <button type="submit" class="btn-submit">Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
