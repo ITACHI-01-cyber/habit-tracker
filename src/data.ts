@@ -13,7 +13,7 @@ export const USER_DATA = {
   profileImage: "https://i.ibb.co/gZ3WTg3b/personal-image.jpg",
   role: "Developer",
   github: "https://github.com/ITACHI-01-cyber",
-  linkedin: "https://www.linkedin.com/in/example", // Placeholder
+  linkedin: "https://www.linkedin.com/in/vivek-bhardwaj-468274323/?skipRedirect=true",
   email: "bvivek514@gmail.com",
   reddit: "https://www.reddit.com/user/example", // Placeholder
   about: "I'm a developer who genuinely enjoys bringing ideas to life on the web. I don't just write code—I like to solve real problems and create experiences that feel effortless for the user. Whether I'm snapping together clean interfaces with React or wiring up sturdy backends with Spring Boot and MongoDB, I love the whole process. I'm always messing around with new tech, asking questions, and trying to build things that people actually want to use.",
@@ -39,9 +39,9 @@ export const USER_DATA = {
   ],
   resume: {
     education: [
-      { period: "2024 - 2028", title: "B.Tech in Computer Science", institution: "University of Technology", description: "Currently pursuing Bachelor of Technology in Computer Science." },
-      { period: "2022 - 2024", title: "Class 12 (High School)", institution: "Science Academy", description: "Passed with Physics, Chemistry, and Mathematics (PCM)." },
-      { period: "2020 - 2022", title: "Class 10", institution: "Secondary School", description: "Completed secondary education." },
+      { period: "2024 - 2028", title: "B.Tech in Computer Science", institution: "Institute of Technology Gopeshwar, Uttarakhand Technical University", description: "Currently pursuing Bachelor of Technology in Computer Science." },
+      { period: "2022 - 2024", title: "Class 12 (High School)", institution: "St. Soldier Divine Public School", description: "Passed with Physics, Chemistry, and Mathematics (PCM)." },
+      { period: "2020 - 2022", title: "Class 10", institution: "St. Soldier Divine Public School", description: "Completed secondary education." },
     ],
     experience: [
       { period: "2025 - Present", title: "Full Stack Projects", institution: "Independent Journey", description: "Architecting full-stack applications with React, Spring Boot, and MongoDB. Focusing on clean code and robust systems." },
